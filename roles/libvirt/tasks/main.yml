@@ -1,0 +1,13 @@
+---
+
+- name: "Installation"
+  ansible.builtin.apt:
+    name: libvirt-clients,libvirt-daemon-system,virtinst
+    state: present
+  notify:
+    - "Activation routage IP"
+    - "Démarrage réseau par défaut"
+    - "Démarrage automatique réseau par défaut"
+
+- meta: flush_handlers
+

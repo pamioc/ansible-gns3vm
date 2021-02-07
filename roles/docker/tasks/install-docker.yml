@@ -1,0 +1,13 @@
+---
+
+- name: "Installation pré-requis"
+  ansible.builtin.apt:
+    name: apt-transport-https,ca-certificates
+    state: present
+
+- name: "Installation"
+  ansible.builtin.shell: curl -sSL https://get.docker.com | bash
+  args:
+    warn: false
+
+

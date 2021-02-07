@@ -1,0 +1,11 @@
+---
+
+- name: "Test"
+  ansible.builtin.stat:
+    path: /usr/local/bin/ubridge
+  register: ubridge
+
+- name: "Lancement installation"
+  ansible.builtin.include_tasks: install-ubridge.yml
+  when: ubridge.stat.exists == false
+

@@ -1,0 +1,5 @@
+---
+# Variables globales
+datadir: "/opt"
+datadir_gns3: "{{ datadir }}/gns3"
+datadir_docker: "{{ datadir }}/docker"

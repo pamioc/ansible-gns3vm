@@ -1,0 +1,11 @@
+---
+
+- name: "Test compatibilité"
+  ansible.builtin.stat:
+    path: /usr/lib/i386-linux-gnu/libcrypto.so.1.1
+  register: iou
+
+- name: "Lancement installation"
+  ansible.builtin.include_tasks: install-iou.yml
+  when: iou.stat.exists == false
+

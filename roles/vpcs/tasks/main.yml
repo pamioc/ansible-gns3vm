@@ -1,0 +1,11 @@
+---
+
+- name: "Test"
+  ansible.builtin.stat:
+    path: /usr/local/bin/vpcs
+  register: vpcs
+
+- name: "Lancement installation"
+  ansible.builtin.include_tasks: install-vpcs.yml
+  when: vpcs.stat.exists == false
+

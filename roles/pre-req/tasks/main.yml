@@ -1,0 +1,20 @@
+---
+
+- name: "Test périphériques pré-requis"
+  verif_sys:
+    cpu: True
+    kvm: True
+    tun: True
+
+- name: "Installation pré-requis"
+  ansible.builtin.apt:
+    update_cache: yes
+    name: gcc,make,cmake,build-essential,git,curl,bridge-utils
+    state: present
+
+- name: "Ajout utilisateur gns3"
+  ansible.builtin.user:
+    name: gns3
+    comment: GNS3
+    uid: 10000
+

@@ -1,0 +1,36 @@
+---
+
+- name: "Installation pré-requis"
+  ansible.builtin.apt:
+    name: libpcap0.8-dev,libelf-dev
+
+- name: "Téléchargement"
+  ansible.builtin.git:
+    repo: "https://github.com/GNS3/dynamips.git"
+    dest: "{{build_dynamips}}"
+
+- name: "Création dossier compilation"
+  ansible.builtin.file:
+    path: "{{build_dynamips}}/build"
+    state: directory
+
+- name: "Préparation compilation"
+  ansible.builtin.command: cmake ..
+  args:
+    chdir: "{{build_dynamips}}/build"
+
+- name: "Compilation"
+  ansible.builtin.command: make
+  args:
+    chdir: "{{build_dynamips}}/build"
+
+- name: "Installation"
+  ansible.builtin.command: make install
+  args:
+    chdir: "{{build_dynamips}}/build"
+
+- name: "Nettoyage"
+  ansible.builtin.file:
+    path: "{{build_dynamips}}"
+    state: absent
+

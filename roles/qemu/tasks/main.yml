@@ -1,0 +1,13 @@
+---
+
+- name: "Installation"
+  ansible.builtin.apt:
+    name: qemu,qemu-kvm,qemu-utils,ovmf,cpulimit
+    state: present
+
+- name: "Modification utilisateur gns3"
+  ansible.builtin.user:
+    name: gns3
+    append: yes
+    groups: kvm
+

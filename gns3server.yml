@@ -1,0 +1,34 @@
+---
+
+- name: "Groupement virtuel des hôtes"
+  hosts: gns3server
+  tags: "always"
+  roles:
+    - role: "groupe_os"
+      groupe: gns3server
+
+- name: "Installation hyperviseur GNS3"
+  hosts: gns3server_debian10
+  gather_facts: no
+  roles:
+    - role: "pre-req"
+      tags: [ "always", "pre-req", "pre-requis", "pré-requis" ]
+    - role: "ubridge"
+      tags: "ubridge"
+    - role: "dynamips"
+      tags: "dynamips"
+    - role: "vpcs"
+      tags: "vpcs"
+    - role: "qemu"
+      tags: "qemu"
+    - role: "libvirt"
+      tags: "libvirt"
+    - role: "docker"
+      tags: "docker"
+    - role: "gns3server"
+      tags: [ "gns3server", "gns3" ]
+    - role: "iou"
+      tags: "iou"
+    - role: "reboot"
+      tags: [ "never", "reboot", "redemarrage", "redémarrage" ]
+

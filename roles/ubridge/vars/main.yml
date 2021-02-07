@@ -1,0 +1,4 @@
+---
+
+# Répertoire temporaire de compilation
+build_ubridge: "/tmp/ubridge"

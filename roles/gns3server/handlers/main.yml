@@ -1,0 +1,13 @@
+---
+
+- name: "Rechargement services système"
+  ansible.builtin.systemd:
+    daemon_reload: yes
+
+- name: "Activation et (re)démarrage service"
+  ansible.builtin.systemd:
+    name: gns3
+    enabled: yes
+    masked: no
+    state: restarted
+

@@ -1,0 +1,27 @@
+---
+
+- name: "Test"
+  ansible.builtin.stat:
+    path: /usr/bin/dockerd
+  register: dockerd
+
+- name: "Lancement installation"
+  ansible.builtin.include_tasks: install-docker.yml
+  when: dockerd.stat.exists == false
+
+- name: "Modification utilisateur gns3"
+  ansible.builtin.user:
+    name: gns3
+    append: yes
+    groups: docker
+
+- name: "Configuration"
+  docker_daemon_config:
+    data-root: "{{ datadir_docker }}"
+    force: yes
+  notify:
+    - Création répertoire
+    - Redémarrage service
+
+- meta: flush_handlers
+
