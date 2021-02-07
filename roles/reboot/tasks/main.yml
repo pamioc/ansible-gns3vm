@@ -1,0 +1,6 @@
+---
+
+- name: "Redémarrage node [{{inventory_hostname}}] "
+  ansible.builtin.reboot:
+    reboot_timeout: 120
+

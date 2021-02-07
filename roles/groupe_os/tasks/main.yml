@@ -1,0 +1,6 @@
+---
+
+- name: "Groupement virtuel par OS"
+  ansible.builtin.group_by:
+    key: "{{ groupe }}_{{ ansible_facts['distribution']|lower }}{{ ansible_facts['distribution_major_version'] }}"
+

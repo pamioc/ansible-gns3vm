@@ -1,0 +1,48 @@
+---
+
+- name: "Test"
+  ansible.builtin.stat:
+    path: /usr/local/bin/gns3server
+  register: gns3server
+
+- name: "Lancement installation"
+  ansible.builtin.include_tasks: install-gns3server.yml
+  when: gns3server.stat.exists == false
+
+- name: "Création service"
+  ansible.builtin.template:
+    src: gns3.service
+    dest: /lib/systemd/system/gns3.service
+    owner: gns3
+    group: gns3
+  notify:
+    - "Rechargement services système"
+
+- name: "Création répertoires"
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+    owner: gns3
+    group: gns3
+  with_items:
+    - "/etc/gns3"
+    - "{{ datadir_gns3 }}"
+
+- name: "Téléchargement configuration exemple"
+  get_url:
+    url: https://github.com/GNS3/gns3-server/blob/master/conf/gns3_server.conf
+    dest: /etc/gns3/gns3_server_exemple.conf
+    mode: 0644
+
+- name: "Configuration"
+  gns3server_daemon_config:
+    config-file: /etc/gns3/gns3_server.conf
+    interface: eth0
+    port: 3080
+    data-root: "{{ datadir_gns3 }}"
+  no_log: true
+  notify:
+    - "Activation et (re)démarrage service"
+
+- meta: flush_handlers
+

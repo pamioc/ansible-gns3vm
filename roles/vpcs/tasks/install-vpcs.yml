@@ -1,0 +1,22 @@
+---
+
+- name: "Téléchargement"
+  ansible.builtin.git:
+    repo: "https://github.com/GNS3/vpcs.git"
+    dest: "{{build_vpcs}}"
+
+- name: "Compilation"
+  ansible.builtin.command: ./mk.sh amd64
+  args:
+    chdir: "{{build_vpcs}}/src"
+
+- name: "Installation"
+  ansible.builtin.command: install vpcs /usr/local/bin
+  args:
+    chdir: "{{build_vpcs}}/src"
+
+- name: "Nettoyage"
+  ansible.builtin.file:
+    path: "{{build_vpcs}}"
+    state: absent
+

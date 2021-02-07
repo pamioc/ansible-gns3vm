@@ -1,0 +1,11 @@
+---
+
+- name: "Test"
+  ansible.builtin.stat:
+    path: /usr/local/bin/dynamips
+  register: dynamips
+
+- name: "Lancement installation"
+  ansible.builtin.include_tasks: install-dynamips.yml
+  when: dynamips.stat.exists == false
+

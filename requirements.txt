@@ -1,0 +1,2 @@
+# Ce playbook n'a pas été testé sur une version antérieure à ansible 2.10
+ansible>=2.10

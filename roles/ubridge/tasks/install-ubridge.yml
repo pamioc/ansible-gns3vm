@@ -1,0 +1,26 @@
+---
+
+- name: "Installation pré-requis"
+  ansible.builtin.apt:
+    name: libpcap-dev
+
+- name: "Téléchargement"
+  ansible.builtin.git:
+    repo: "https://github.com/GNS3/ubridge.git"
+    dest: "{{ build_ubridge }}"
+
+- name: "Compilation"
+  ansible.builtin.command: make
+  args:
+    chdir: "{{ build_ubridge }}"
+
+- name: "Installation"
+  ansible.builtin.command: make install
+  args:
+    chdir: "{{ build_ubridge }}"
+
+- name: "Nettoyage"
+  ansible.builtin.file:
+    path: "{{ build_ubridge }}"
+    state: absent
+
