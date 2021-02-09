@@ -1,8 +1,0 @@
----
-
-all:
-  children:
-    gns3server:
-      hosts:
-        node-cible1
-        node-cible2
