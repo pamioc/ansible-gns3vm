@@ -5,7 +5,7 @@
 
 # verif_sys
 
-Module ansible de vérification des pré-requis CPU, KVM et TUN/TAP pour l'installation d'un serveur GNS3 VM.
+Module Ansible de vérification des prérequis CPU, KVM et TUN/TAP pour l'installation d'un serveur GNS3 VM.
 
 #### Systèmes supportés :
 

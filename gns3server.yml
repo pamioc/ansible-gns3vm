@@ -7,7 +7,7 @@
     - role: "groupe_os"
       groupe: gns3server
 
-- name: "Installation hyperviseur GNS3"
+- name: "Installation serveur GNS3 VM"
   hosts: gns3server_debian10
   gather_facts: no
   roles:

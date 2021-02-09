@@ -6,7 +6,7 @@
 
 # gns3server_daemon_config
 
-Module ansible de génération du fichier de configuration du démon gns3server dans le cadre de l'installation d'un serveur GNS3 VM.  
+Module Ansible de génération du fichier de configuration du démon gns3server dans le cadre de l'installation d'un serveur GNS3 VM.  
 Si le fichier de configuration est déjà présent, la configuration est modifiée uniquement si l'option `force` est activée.
 
 #### Systèmes supportés
@@ -86,10 +86,10 @@ Exemple de la définition d'une tâche de configuration par défaut :
 Exemple de la définition d'une tâche de configuration par défaut ou modification de la configuration actuelle :
 - Utilisation du fichier de configuration : `/etc/gns3/gns3_server.conf`.
 - Détection de l'adresse IP sur l'interface réseau `eth0`
-- Désactivation du pré-requis KVM (Démarrage de VM Qemu impossible).
+- Désactivation du prérequis KVM (Démarrage de VM Qemu impossible).
 - Activation du mode debug du module.
 ```yaml
-- name: "Configuration en utilisant l'interface d'écoute eth0, désactivation du pré-requis KVM (Démarrage de VM Qemu normalement impossible) et activation du mode debug du module"
+- name: "Configuration en utilisant l'interface d'écoute eth0, désactivation du prérequis KVM (Démarrage de VM Qemu impossible) et activation du mode debug du module"
   gns3server_daemon_config:
     config-file: "/etc/gns3/gns3_server.conf"
     force: true
@@ -112,7 +112,7 @@ parametres: {
 }
 ```
 
-Exemple de paramètres de la configuration actuelle si il en existe une :
+Exemple de paramètres de la configuration actuelle s'il en existe une :
 ```json
 config_actuelle: {
   "Server": {
