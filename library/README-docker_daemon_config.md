@@ -5,7 +5,7 @@
 
 # docker_daemon_config
 
-Module ansible de génération du fichier de configuration du démon docker dans le cadre de l'installation d'un serveur GNS3 VM.  
+Module Ansible de génération du fichier de configuration du démon docker dans le cadre de l'installation d'un serveur GNS3 VM.  
 Si le fichier de configuration est déjà présent, la configuration est modifiée uniquement si l'option `force` est activée.
 
 #### Systèmes supportés
@@ -82,7 +82,7 @@ parametres: {
 }
 ```
 
-Exemple de paramètres de la configuration actuelle si il en existe une :
+Exemple de paramètres de la configuration actuelle s'il en existe une :
 ```json
 config_actuelle: {
   "data-root": "/var/lib/docker"

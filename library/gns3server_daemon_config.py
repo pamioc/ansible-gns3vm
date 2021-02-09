@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: UTF-8 -*
-# Module de création de fichier de configuration du service DOCKER
+# Module de création de fichier de configuration du service GNS3SERVER
 
 # Copyright: (c) 2021, Pascal MIRALLES <miralles.p@orange.fr>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)

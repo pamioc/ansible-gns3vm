@@ -8,12 +8,12 @@
 
 # Ansible GNS3 VM
 
-Ce dépôt est destiné à l'installation d'un serveur GNS3 (GNS3 VM) et de ses compléments,
+Ce dépôt est destiné à l'installation d'un serveur GNS3 (GNS3 VM) et ses compléments,
 sur Linux Debian 10 (Buster) sans utiliser les paquets d'installation prévus pour Ubuntu.  
 Cette méthode d'installation est une alternative à la [version téléchargeable](https://gns3.com/software/download-vm)
 sous forme d'image système Ubuntu depuis le site GNS3.  
 Cette installation est complétement automatisée grâce à l'exécution d'un playbook Ansible.  
-Il n'est pas necéssaire que le manageur Ansible soit sur Linux Debian.
+Il n'est pas nécessaire que le manageur Ansible soit sur Linux Debian.
 
 #### Compléments :
 
@@ -28,9 +28,9 @@ Les compléments suivants sont installés sur les cibles :
 
 #### Modules :
 
-Ce dépôt intègre 3 modules personnalisés développé en python et s'exécutant sur les cibles par l'intermédiaire du playbook Ansible :
+Ce dépôt intègre 3 modules Ansible personnalisés développés en python et s'exécutant sur les cibles par l'intermédiaire du playbook Ansible :
 - [verif_sys](library/README-verif_sys.md "Module verif_sys") :
-vérifie les pré-requis matériel pour l'hyperviseur KVM et les réseaux virtuels (TUN/TAP).
+vérifie les prérequis matériel pour l'hyperviseur KVM et les réseaux virtuels (TUN/TAP).
 - [docker_daemon_config](library/README-docker_daemon_config.md "Module docker_daemon_config") :
 Génère la configuration de docker.
 - [gns3server_daemon_config](library/README-gns3server_daemon_config.md "Module gns3server_daemon_config") :
@@ -77,7 +77,7 @@ datadir_docker: "{{ datadir }}/docker"
 ```
 
 Configuration des hôtes cibles :  
-- `inventories/staging`
+- `inventories/production`
 
 ```yaml
 ---
@@ -92,16 +92,16 @@ all:
 ## Utilisation
 
 - Déploiement complet d'un serveur GNS3 VM :  
-`ansible-playbook -i inventories/staging main.yml`
+`ansible-playbook -i inventories/production main.yml`
 
-- Déploiement d'un serveur GNS3 VM avec rédémarrage :  
-`ansible-playbook -i inventories/staging main.yml -t "all,reboot"`
+- Déploiement complet d'un serveur GNS3 VM avec redémarrage :  
+`ansible-playbook -i inventories/production main.yml -t "all,reboot"`
 
 - Déploiement du complément ubridge :  
-`ansible-playbook -i inventories/staging main.yml -t "ubridge"`
+`ansible-playbook -i inventories/production main.yml -t "ubridge"`
 
 - Déploiement de gns3server, des compléments ubridge, dynamips et docker :  
-`ansible-playbook -i inventories/staging main.yml -t "ubridge,dynamips,docker,gns3server"`
+`ansible-playbook -i inventories/production main.yml -t "ubridge,dynamips,docker,gns3server"`
 
 ## Configurer GNS3 afin d'utiliser le serveur
 
